@@ -9,28 +9,31 @@
 </template>
 
 <script>
-import { ref, reactive } from "@vue/reactivity";
+import { useColorPicker } from '../composables/colorPicker';
 
-export default {
-  setup() {
-    const colors = ["green", "red", "blue", "purple"];
-    let message = ref("Pick a color...");
+const { colors, message, matchColor } = useColorPicker();
+// import { ref, reactive } from "@vue/reactivity";
 
-    const matchColor = (value) => {
-      // do a random color based on the array index;
-      const randomNumber = Math.floor(Math.random() * 3) + 1; //between 1 - 4
+// export default {
+//   setup() {
+//     const colors = ["green", "red", "blue", "purple"];
+//     let message = ref("Pick a color...");
 
-      if (colors[randomNumber] === value) {
-        message.value = `You win... [answer: ${colors[randomNumber]}]`;
-        return;
-      }
+//     const matchColor = (value) => {
+//       // do a random color based on the array index;
+//       const randomNumber = Math.floor(Math.random() * 3) + 1; //between 1 - 4
 
-      message.value = `You loose [answer: ${colors[randomNumber]}]`;
-    };
+//       if (colors[randomNumber] === value) {
+//         message.value = `You win... [answer: ${colors[randomNumber]}]`;
+//         return;
+//       }
 
-    return { colors, message, matchColor };
-  },
-};
+//       message.value = `You loose [answer: ${colors[randomNumber]}]`;
+//     };
+
+//     return { colors, message, matchColor };
+//   },
+// };
 </script>
 
-<style></style>
+<!-- <style></style> -->
